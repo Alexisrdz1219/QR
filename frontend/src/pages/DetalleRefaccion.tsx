@@ -34,7 +34,8 @@ export default function DetalleRefaccion({ refacciones }: Props) {
   }
 
   // 3️⃣ Ahora sí, usar ref SIN miedo
-  const qrValue = `${window.location.origin}/refaccion/${ref.id}`;
+  const qrValue = `${window.location.origin}/inventario/${ref.id}`;
+
   
 
 
@@ -155,11 +156,12 @@ export default function DetalleRefaccion({ refacciones }: Props) {
 
             <div className="col-md-4 text-center">
               <QRCodeCanvas
-  key={qrValue} // 🔥 OBLIGATORIO
+  key={qrValue}
   value={qrValue}
   size={150}
   ref={qrRef}
 />
+
 
 
 
