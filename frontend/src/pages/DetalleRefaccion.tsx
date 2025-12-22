@@ -13,8 +13,10 @@ export default function DetalleRefaccion({ refacciones }: Props) {
   const navigate = useNavigate();
   const qrRef = useRef<HTMLCanvasElement>(null);
 
+  // 1️⃣ Buscar refacción
   const ref = refacciones.find(r => r.id === id);
 
+  // 2️⃣ Validar existencia
   if (!ref) {
     return (
       <div className="container mt-5">
@@ -30,6 +32,10 @@ export default function DetalleRefaccion({ refacciones }: Props) {
       </div>
     );
   }
+
+  // 3️⃣ Ahora sí, usar ref SIN miedo
+  const qrValue = `${window.location.origin}/refaccion/${ref.id}`;
+
 
  /* ===============================
      FUNCIONES QR (ref YA existe)
@@ -147,10 +153,11 @@ export default function DetalleRefaccion({ refacciones }: Props) {
 
             <div className="col-md-4 text-center">
               <QRCodeCanvas
-            value={ref.id}
+            value={qrValue}
             size={150}
             ref={qrRef}
           />
+
 
           <p className="mt-2 text-muted">QR del producto</p>
 

@@ -57,6 +57,11 @@ export default function AppRoutes({ refacciones, setRefacciones }: Props) {
     />
   }
 />
+<Route
+  path="/refaccion/:id"
+  element={<DetalleRefaccion refacciones={refacciones} />}
+/>
+
       </Routes>
     </BrowserRouter>
   );
