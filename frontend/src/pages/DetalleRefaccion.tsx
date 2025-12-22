@@ -13,28 +13,13 @@ export default function DetalleRefaccion({ refacciones }: Props) {
   const navigate = useNavigate();
   const qrRef = useRef<HTMLCanvasElement>(null);
 
-  // 1️⃣ Buscar refacción
   const ref = refacciones.find(r => r.id === id);
 
-  // 2️⃣ Validar existencia
-  if (!ref) {
-    return (
-      <div className="container mt-5">
-        <div className="alert alert-danger">
-          Refacción no encontrada
-        </div>
-        <button
-          className="btn btn-secondary"
-          onClick={() => navigate("/inventario")}
-        >
-          Volver
-        </button>
-      </div>
-    );
-  }
+  if (!ref) return <p>No existe la refacción</p>;
 
-  // 3️⃣ Ahora sí, usar ref SIN miedo
-  const qrValue = `${window.location.origin}/inventario/${ref.id}`;
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+  const qrValue = `${baseUrl}/refaccion/${ref.id}`;
+
 
   
 
