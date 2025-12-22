@@ -38,6 +38,7 @@ export default function DetalleRefaccion({ refacciones }: Props) {
   
 
 
+
  /* ===============================
      FUNCIONES QR (ref YA existe)
      =============================== */
@@ -154,10 +155,12 @@ export default function DetalleRefaccion({ refacciones }: Props) {
 
             <div className="col-md-4 text-center">
               <QRCodeCanvas
-            value={qrValue}
-            size={150}
-            ref={qrRef}
-          />
+  key={qrValue} // 🔥 OBLIGATORIO
+  value={qrValue}
+  size={150}
+  ref={qrRef}
+/>
+
 
 
           <p className="mt-2 text-muted">QR del producto</p>
