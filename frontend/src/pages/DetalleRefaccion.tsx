@@ -35,6 +35,7 @@ export default function DetalleRefaccion({ refacciones }: Props) {
 
   // 3️⃣ Ahora sí, usar ref SIN miedo
   const qrValue = `${window.location.origin}/refaccion/${ref.id}`;
+  
 
 
  /* ===============================
