@@ -100,102 +100,142 @@
 //     </div>
 //   );
 // }
-import { Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-
-export default function DashboardLemcoFull() {
+export default function Dashboard() {
   return (
-    <div className="min-vh-100 w-100 bg-light">
+    <div className="app">
 
-      {/* TOPBAR */}
-      <header className="bg-white border-bottom shadow-sm sticky-top">
-        <div className="container-fluid py-3">
+      {/* HEADER */}
+      <header className="header">
+        <div className="brand">IEMCO <span>v1.0</span></div>
 
-          {/* MOBILE FIRST */}
-          <div className="d-flex flex-column gap-3">
+        <input
+          className="search"
+          placeholder="Buscar refacción o escanear QR..."
+        />
 
-            {/* LOGO */}
-            <div className="d-flex justify-content-between align-items-center">
-              <span className="fs-4 fw-bold text-success">
-                IEMCO <small className="fs-6 opacity-75">v1.0</small>
-              </span>
-
-              <button type="button" className="btn btn-dark position-relative d-md-none">
-                Stock
-                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  4+
-                </span>
-              </button>
-            </div>
-
-            {/* TITULO */}
-            <h5 className="fw-bold mb-0 text-center d-md-none">
-              Panel de Control
-            </h5>
-
-            {/* BUSCADOR */}
-            <input
-              type="search"
-              className="form-control"
-              placeholder="Buscar refacción..."
-            />
-
-            {/* DESKTOP ACTIONS */}
-            <div className="d-none d-md-flex justify-content-end gap-3">
-              <button type="button" className="btn btn-dark position-relative">
-                Stock
-                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  4+
-                </span>
-              </button>
-            </div>
-
-          </div>
-        </div>
+        <button className="stock">
+          Stock <span>4</span>
+        </button>
       </header>
 
-      {/* CONTENIDO */}
-      <main className="container-fluid p-3 p-md-4">
+      {/* MAIN */}
+      <main className="main">
+        <section className="card">
+          <h2>Operaciones rápidas</h2>
+          <p>Acceso inmediato a inventario</p>
 
-        {/* OPERACIONES RÁPIDAS */}
-        <div className="row">
-          <div className="col-12">
-            <div className="bg-white p-4 rounded-3 shadow-sm border-start border-success border-5">
-
-              <h3 className="fw-bold mb-1 text-center text-md-start">
-                Operaciones Rápidas
-              </h3>
-
-              <p className="text-muted text-center text-md-start">
-                Gestión de activos en tiempo real.
-              </p>
-
-              {/* BOTONES MOBILE FRIENDLY */}
-              <div className="row g-3 mt-3">
-                <div className="col-12 col-md-6">
-                  <Link
-                    to="/nueva"
-                    className="btn btn-success btn-lg w-100"
-                  >
-                    Registrar Refacción
-                  </Link>
-                </div>
-
-                <div className="col-12 col-md-6">
-                  <Link
-                    to="/inventario"
-                    className="btn btn-outline-dark btn-lg w-100"
-                  >
-                    Inventario de Refacciones
-                  </Link>
-                </div>
-              </div>
-
-            </div>
+          <div className="actions">
+            <button className="primary">Registrar refacción</button>
+            <button className="secondary">Inventario</button>
           </div>
-        </div>
-
+        </section>
       </main>
+
+      <style>{`
+        * {
+          box-sizing: border-box;
+        }
+
+        .app {
+          min-height: 100vh;
+          background: #f3f4f6;
+        }
+
+        /* HEADER */
+        .header {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 12px;
+          padding: 12px;
+          background: white;
+          border-bottom: 1px solid #ddd;
+        }
+
+        .brand {
+          font-weight: 700;
+          font-size: 1.4rem;
+          color: #198754;
+        }
+
+        .brand span {
+          font-size: 0.9rem;
+          opacity: 0.7;
+        }
+
+        .search {
+          padding: 14px;
+          font-size: 1rem;
+        }
+
+        .stock {
+          display: none;
+          padding: 10px;
+          font-size: 0.9rem;
+        }
+
+        /* MAIN */
+        .main {
+          padding: 16px;
+        }
+
+        .card {
+          background: white;
+          padding: 20px;
+          border-radius: 12px;
+          border-left: 6px solid #198754;
+        }
+
+        .card h2 {
+          margin: 0;
+          font-size: 1.3rem;
+        }
+
+        .card p {
+          color: #6b7280;
+          margin-bottom: 16px;
+        }
+
+        .actions {
+          display: grid;
+          gap: 12px;
+        }
+
+        .actions button {
+          padding: 16px;
+          font-size: 1.1rem;
+          border-radius: 10px;
+          border: none;
+        }
+
+        .primary {
+          background: #198754;
+          color: white;
+        }
+
+        .secondary {
+          background: #e5e7eb;
+        }
+
+        /* DESKTOP */
+        @media (min-width: 768px) {
+          .header {
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+          }
+
+          .stock {
+            display: inline-block;
+          }
+
+          .main {
+            padding: 32px;
+          }
+
+          .actions {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+      `}</style>
     </div>
   );
 }
