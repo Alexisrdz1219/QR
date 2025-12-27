@@ -106,35 +106,50 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default function DashboardLemcoFull() {
   return (
     <div className="min-vh-100 w-100 bg-light">
-      
-      {/* TOPBAR */}
-      <header className="navbar navbar-expand-lg bg-white border-bottom px-3 py-3 shadow-sm sticky-top">
-        <div className="container-fluid flex-column flex-lg-row gap-3">
 
-          {/* Logo y título */}
-          <div className="d-flex align-items-center gap-3">
-            <span className="fs-4 fw-bold text-success">
-              IEMCO <small className="fs-6 opacity-75">v1.0</small>
-            </span>
-            <h5 className="mb-0 fw-bold d-none d-md-block">
+      {/* TOPBAR */}
+      <header className="bg-white border-bottom shadow-sm sticky-top">
+        <div className="container-fluid py-3">
+
+          {/* MOBILE FIRST */}
+          <div className="d-flex flex-column gap-3">
+
+            {/* LOGO */}
+            <div className="d-flex justify-content-between align-items-center">
+              <span className="fs-4 fw-bold text-success">
+                IEMCO <small className="fs-6 opacity-75">v1.0</small>
+              </span>
+
+              <button type="button" className="btn btn-dark position-relative d-md-none">
+                Stock
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  4+
+                </span>
+              </button>
+            </div>
+
+            {/* TITULO */}
+            <h5 className="fw-bold mb-0 text-center d-md-none">
               Panel de Control
             </h5>
-          </div>
 
-          {/* Buscador y botón */}
-          <div className="d-flex align-items-center gap-2 w-100 w-lg-auto">
+            {/* BUSCADOR */}
             <input
               type="search"
               className="form-control"
-              placeholder="Buscar..."
+              placeholder="Buscar refacción..."
             />
 
-            <button type="button" className="btn btn-dark position-relative">
-              Stock
-              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                4+
-              </span>
-            </button>
+            {/* DESKTOP ACTIONS */}
+            <div className="d-none d-md-flex justify-content-end gap-3">
+              <button type="button" className="btn btn-dark position-relative">
+                Stock
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  4+
+                </span>
+              </button>
+            </div>
+
           </div>
         </div>
       </header>
@@ -143,32 +158,37 @@ export default function DashboardLemcoFull() {
       <main className="container-fluid p-3 p-md-4">
 
         {/* OPERACIONES RÁPIDAS */}
-        <div className="row mb-4">
+        <div className="row">
           <div className="col-12">
             <div className="bg-white p-4 rounded-3 shadow-sm border-start border-success border-5">
 
-              <div className="mb-3">
-                <h3 className="fw-bold mb-1">Operaciones Rápidas</h3>
-                <p className="text-muted mb-0">
-                  Gestión de activos en tiempo real.
-                </p>
-              </div>
+              <h3 className="fw-bold mb-1 text-center text-md-start">
+                Operaciones Rápidas
+              </h3>
 
-              {/* BOTONES RESPONSIVOS */}
-              <div className="d-flex flex-column flex-md-row gap-3">
-                <Link
-                  to="/nueva"
-                  className="btn btn-success btn-lg w-100 w-md-auto"
-                >
-                  Registrar Refacción
-                </Link>
+              <p className="text-muted text-center text-md-start">
+                Gestión de activos en tiempo real.
+              </p>
 
-                <Link
-                  to="/inventario"
-                  className="btn btn-outline-dark btn-lg w-100 w-md-auto"
-                >
-                  Inventario de Refacciones
-                </Link>
+              {/* BOTONES MOBILE FRIENDLY */}
+              <div className="row g-3 mt-3">
+                <div className="col-12 col-md-6">
+                  <Link
+                    to="/nueva"
+                    className="btn btn-success btn-lg w-100"
+                  >
+                    Registrar Refacción
+                  </Link>
+                </div>
+
+                <div className="col-12 col-md-6">
+                  <Link
+                    to="/inventario"
+                    className="btn btn-outline-dark btn-lg w-100"
+                  >
+                    Inventario de Refacciones
+                  </Link>
+                </div>
               </div>
 
             </div>
@@ -176,14 +196,7 @@ export default function DashboardLemcoFull() {
         </div>
 
       </main>
-
-      <style>
-        {`
-          input::placeholder {
-            font-size: 0.9rem;
-          }
-        `}
-      </style>
     </div>
   );
 }
+
